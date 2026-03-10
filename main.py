@@ -5,9 +5,12 @@
 """
 
 import rqdatac as rq
+import os
 
-# 米筐 License URI (从 rqsdk license 获取)
-LICENSE_URI = "tcp://license:ObXUkn8SOfYt_gAHuLp8LVizyoBn1ATTO1wJoIDhhVxdB7qrWzDoS8Ulv_vwjQXs9tlnSgzdjSzCLeLBUz6wi2wu4O2gIm9Ob4olT9OGMxh9VedWw1_DusdOHKQTJmOEXYPGVOZyyrilpjfcA-xOuSBHZEHdGuifGAifC7Zbk4A=g-5AhRJ43jD-ETydrAsDhKfG-apOPXf9KUbzjw8w6E5lgdJubvw3Jb6uKJJtLOZfC1kwuuv9Ppy6INaIYyKwTnlHjnVahCT69KBKx-XMfi3fvFlhhAguPMWzfaFAsub1G5XHAxCEvSjDE18IUPWVBjn1iln645gVEYn8NCFqgdM=@rqdatad-pro.ricequant.com:16011"
+# 从环境变量读取米筐 License
+LICENSE_URI = os.environ.get("RQDATAC_URI")
+if not LICENSE_URI:
+    raise ValueError("请设置环境变量 RQDATAC_URI")
 
 # 初始化rqdatac
 rq.init(uri=LICENSE_URI)
